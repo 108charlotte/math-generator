@@ -50,7 +50,11 @@ def generate_no_latex(num_length_limit:int=8, num_magnitude_limit:int=500, group
     # print(equation)
 
     final_string = ' '.join(equation)
-    final_string += f' = {eval(final_string)}'
+    try: 
+        final_string += f' = {eval(final_string)}'
+    except ValueError: 
+        if (operators is None or len(operators) = 0) and num_length_limit == 1: 
+            print(f"You cannot create an equation with multiple numbers without an operator. Either add at least one operator or restrict the equation to one number only")
     return final_string
 
 if __name__ == "__main__": # prevents from running if running a unittest
