@@ -1,5 +1,5 @@
 from main import calc_full_equation
-
+# NOTE: does not currently support multiple types of grouping symbols :(
 def gen_dataset(size): 
     equations = []
     for _ in range(size): 
