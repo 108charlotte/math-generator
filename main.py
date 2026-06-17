@@ -26,14 +26,14 @@ def calc_full_equation(num_length_limit:int=8, num_magnitude_limit:int=500, grou
             equation_floats = [str(num) for num in equation]
             all_ints = ' '.join(equation_ints)
             all_floats = ' '.join(equation_floats)
-
+            
             try: 
                 all_ints += f' = {eval(all_floats)}'
                 found_no_error_equation = True
                 break # if valid final string was found
             except (OverflowError, ZeroDivisionError, TypeError): 
                 i += 1
-                if isinstance(error, OverflowError): condition = i < num_reruns # should happen after i increment
+                if isinstance(error, OverflowError): condition = i >= num_reruns # should happen after i increment
                 continue
         if not found_no_error_equation: raise OverflowError(f"After attempting {num_reruns} reruns, we were unable to generate an equation which didn't overflow python's float limit. Please either decrease the num length and/or num magnitude limit or remove ** from the operations list (if you want to keep the same num length limit and/or num magnitude limit the same). You can also increase your number of retries, but doing so will increase computation time and, at a certain equation size, will no longer work")
     return all_ints
