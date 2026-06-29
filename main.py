@@ -69,6 +69,8 @@ def get_equation(num_length_limit:int=8, num_magnitude_limit:int=500, grouping:l
         for i in range(num_grouping_pairs): 
             pair = [random.choice(number_indices), random.choice(number_indices)]
             first_index, second_index = sorted(pair)
+            if second_index - first_index < 2: # don't want parantheses just around a number without an operation
+                continue
             if first_index == second_index: 
                 continue
             opening = first_index
